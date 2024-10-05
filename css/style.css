@@ -27,7 +27,6 @@ body {
 
 .card {
   width: 100%; /* Aumenta a largura do card */
-  max-width: 500px; /* Define uma largura máxima */
   background-color: rgba(255, 255, 255, 0.7);
 }
 

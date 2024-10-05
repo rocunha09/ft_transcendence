@@ -26,9 +26,11 @@ body {
 }
 
 .card {
-  width: 100%; /* Aumenta a largura do card */
+  width: auto; /* Aumenta a largura do card */
+  height: auto;
   background-color: rgba(255, 255, 255, 0.7);
 }
+
 
 #registration_modal {
   background-color: rgba(255, 255, 255, 0.5);

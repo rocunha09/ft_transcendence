@@ -25,11 +25,6 @@ body {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); /* Efeito de brilho mais forte ao passar o mouse */
 }
 
-.card {
-  width: auto; /* Aumenta a largura do card */
-  height: auto;
-  background-color: rgba(255, 255, 255, 0.7);
-}
 
 
 #registration_modal {

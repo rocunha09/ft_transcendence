@@ -18,15 +18,17 @@
             /* Aumente conforme necessário */
         }
 
-        .full-height {
-            height: 100vh;
+        .card {
+            width: auto;
+            height: auto;
+            background-color: rgba(255, 255, 255, 0.7);
         }
 
-       
         .card-body {
             padding: 2rem;
-            width: 100%;
+            width: auto;
             height: auto;
+
         }
 
         .bracket {
@@ -34,6 +36,7 @@
         justify-content: space-around;
         align-items: center;
         }
+
         .round {
             width: 500px;
             margin: 0 50px 0 50px;
@@ -143,7 +146,7 @@
     </nav>
     <!-- Navbar -->
 
-    <div class="container full-height d-flex justify-content-center align-items-center">
+    <div class=" full-height justify-content-center align-items-center">
         <div class="card">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -438,7 +441,7 @@
                 if (type === 'v') {
                     line.css({
                         'width': '2px',
-                        'top': y + 'px',
+                        'top': (y-75) + 'px',
                         'left': x + 'px',
                         'height': length + 'px'
                     });
@@ -446,7 +449,7 @@
                 else if (type === 'h') {
                     line.css({
                         'height': '2px',
-                        'top': y + 'px',
+                        'top': (y-75) + 'px',
                         'left': x + 'px',
                         'width': length + 'px'
                     });
@@ -455,8 +458,19 @@
                 $('.lines').append(line);
             }
 
-            createLine('line1', 'v', 'padrao', 250, 100, 50); 
-            createLine('line2','h', 'vencedor', 150, 200, 50); 
+            createLine('line1','h', 'vencedor', 320, 192, 90);
+            createLine('line2','h', 'vencedor', 410, 340, 90);
+            createLine('line3','v', 'vencedor', 410, 192, 148);
+
+
+            document.addEventListener('mousemove', function(event) {
+            // Obtém as coordenadas X e Y do mouse
+            var x = event.clientX; // Posição X do mouse
+            var y = event.clientY; // Posição Y do mouse
+
+            // Print no terminal (console) do navegador
+            console.log('Posição do mouse - X: ' + x + ', Y: ' + y);
+        });
 
         });
     </script>

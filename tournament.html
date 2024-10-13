@@ -145,7 +145,6 @@
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-
     <div class=" full-height justify-content-center align-items-center">
         <div class="card">
             <div class="card-body">
@@ -153,7 +152,6 @@
                     <div class="lines"></div>
                     <div class="col-5">
                         <div class="bracket">
-                            <!-- Round 1 -->
                             <div class="round">
                                 <div class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
@@ -227,7 +225,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Round 2 -->
                             <div class="round round-2">
                                 <div class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
@@ -269,7 +266,6 @@
                     </div>
                     <div class="col-2">
                         <div class="bracket">
-                            <!-- Final Round -->
                             <div class="round final-round">
                                 <div class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
@@ -294,7 +290,6 @@
                     </div>
                     <div class="col-5">
                         <div class="bracket">
-                            <!-- Round 2 -->
                             <div class="round round-2">
                                 <div class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
@@ -332,7 +327,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Round 1 -->
                             <div class="round">
                                 <div class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
@@ -458,9 +452,22 @@
                 $('.lines').append(line);
             }
 
-            createLine('line1','h', 'vencedor', 320, 192, 90);
+            createLine('line1','h', 'padrao', 320, 192, 90);
             createLine('line2','h', 'vencedor', 410, 340, 90);
-            createLine('line3','v', 'vencedor', 410, 192, 148);
+            createLine('line3','v', 'padrao', 410, 192, 148);
+
+
+            //printar linha de verde
+            if("p.1.1" ==="finish") {
+                if("p.1.1.1" === "vencer") {
+                    line1, line2
+                }
+                else if("p.1.1.2" === "vencer") {
+                    line3, line4
+                }
+                line5, line6, line6
+            }
+
 
 
             document.addEventListener('mousemove', function(event) {
@@ -478,3 +485,22 @@
 </body>
 
 </html>
+
+
+<!--
+    - div torneio
+        - fechar div de acordo com os brackets do torneio
+        - título
+        - aplicar brilho
+    
+    - partida
+        - criar terceiro lugar (match)
+        - criar card 'ghost' para preencher partir
+    
+    - linhas (vai gerar mufança na assinatura da função create_line)
+        - criar linhas fixadas nas partidas
+        - injetar cores de acordo com a resposta do back - mock
+    
+    - dinâmica de tela
+        - criar card temporizador.
+-->

@@ -25,9 +25,20 @@ body {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); /* Efeito de brilho mais forte ao passar o mouse */
 }
 
+.chat-glow {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Sombra branca suave */
+  transition: box-shadow 0.3s ease;
+}
 
+.chat-glow:hover {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); /* Efeito de brilho mais forte ao passar o mouse */
+}
 
 #registration_modal {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bg_modal {
   background-color: rgba(255, 255, 255, 0.5);
 }
 

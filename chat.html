@@ -162,10 +162,20 @@
     }
 
     .dropdown-menu {
-        background-color: white;
-        z-index: 1000;
         position: absolute;
+        z-index: 9999;
+        background-color: white;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 150px; /* Largura mínima para visualização */
+        display: none; 
     }
+
+    .custom-dropdown-menu.show {
+        display: block;
+    }
+
 
    /* Estilos para a div de emojis */
    .emojis {
@@ -258,7 +268,18 @@
                 <div class="chat-header d-flex align-items-center">
                     <img src="assets/profileDefault.png" alt="User avatar" class="avatar mr-2">
                     <div>
-                        <h6 class="mb-0">John Doe</h6>
+                        <h6 class="mb-0">Bolinho</h6>
+                    </div>
+                </div>
+
+                <div class="chat-item" data-contact="Galaxy">
+                    <div class="d-flex align-items-center">
+                        <img src="assets/galaxy_lobby_1.png" alt="Contact avatar" class="avatar mr-3">
+                        <div>
+                            <h6 class="mb-0">Galaxy</h6>
+                            <small class="text-muted">Hello, how are you?</small>
+                        </div>
+                        <small class="text-muted ml-auto">10:30 AM</small>
                     </div>
                 </div>
                 
@@ -266,21 +287,16 @@
                     <div class="d-flex align-items-center">
                         <img src="assets/profileDefault.png" alt="Contact avatar" class="avatar mr-3">
                         <div>
-                            <h6 class="mb-0">Alice Johnson</h6>
+                            <h6 class="mb-0">Limão boladão</h6>
                             <small class="text-muted">Hello, how are you?</small>
                         </div>
                         <small class="text-muted ml-auto">10:30 AM</small>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div id="chat-123" class="dropdown">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" 
+                            onclick="showDropdownMenu(this, 'Limão boladão', '123')">
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#" onclick="viewProfile('Alice Johnson')">View profile</a>
-                            <a class="dropdown-item" href="#" onclick="addFriend('Alice Johnson')">Add friend</a>
-                            <a class="dropdown-item" href="#" onclick="deleteFriend('Alice Johnson')">Delete friend</a>
-                            <a class="dropdown-item" href="#" onclick="challengeToMatch('Alice Johnson')">Challenge to match</a>
-                        </div>
                     </div>
                 </div>
 
@@ -288,45 +304,19 @@
                     <div class="d-flex align-items-center">
                         <img src="assets/profileDefault.png" alt="Contact avatar" class="avatar mr-3">
                         <div>
-                            <h6 class="mb-0">Alice Johnson</h6>
+                            <h6 class="mb-0">Alê Furona</h6>
                             <small class="text-muted">Hello, how are you?</small>
                         </div>
                         <small class="text-muted ml-auto">10:30 AM</small>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div id="chat-456" class="dropdown">
+                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" 
+                            onclick="showDropdownMenu(this, 'Alê Furona', '456')">
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#" onclick="viewProfile('Alice Johnson')">View profile</a>
-                            <a class="dropdown-item" href="#" onclick="addFriend('Alice Johnson')">Add friend</a>
-                            <a class="dropdown-item" href="#" onclick="deleteFriend('Alice Johnson')">Delete friend</a>
-                            <a class="dropdown-item" href="#" onclick="challengeToMatch('Alice Johnson')">Challenge to match</a>
-                        </div>
                     </div>
                 </div>
 
-                <div class="chat-item active" data-contact="Alice Johnson">
-                    <div class="d-flex align-items-center">
-                        <img src="assets/profileDefault.png" alt="Contact avatar" class="avatar mr-3">
-                        <div>
-                            <h6 class="mb-0">Alice Johnson</h6>
-                            <small class="text-muted">Hello, how are you?</small>
-                        </div>
-                        <small class="text-muted ml-auto">10:30 AM</small>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#" onclick="viewProfile('Alice Johnson')">View profile</a>
-                            <a class="dropdown-item" href="#" onclick="addFriend('Alice Johnson')">Add friend</a>
-                            <a class="dropdown-item" href="#" onclick="deleteFriend('Alice Johnson')">Delete friend</a>
-                            <a class="dropdown-item" href="#" onclick="challengeToMatch('Alice Johnson')">Challenge to match</a>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 
@@ -334,7 +324,7 @@
                 <div class="message-header d-flex align-items-center">
                     <img src="assets/profileDefault.png" alt="Contact avatar" class="avatar mr-2">
                     <div>
-                        <h6 class="mb-0" id="current-chat-name">Alice Johnson</h6>
+                        <h6 class="mb-0" id="current-chat-name">Limão Boladão</h6>
                         <small class="text-muted">Online</small>
                     </div>
                 </div>
@@ -344,7 +334,7 @@
                     <div class="chat-message received">
                         <img src="assets/profileDefault.png" alt="User" class="profile-pic">
                         <div class="message-content">
-                            <div class="username">Alice Johnson</div>
+                            <div class="username">Limão Boladão</div>
                             <div class="message received">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut neque quis elit ultricies vulputate a tincidunt nisl.
                             </div>
@@ -450,6 +440,48 @@
                 }
             });
         });
+
+        function showDropdownMenu(button, contactName, id) {
+            //Remove caso tenha algum em tela
+            let showingMenu = document.querySelector('.dropdown-menu');
+            if(showingMenu != null) {
+                showingMenu.remove();
+            }
+
+            // Criar o elemento do menu dropdown
+            const dropdownMenu = document.createElement('div');
+            dropdownMenu.className = 'dropdown-menu';
+            dropdownMenu.classList.add('custom-dropdown-menu', 'show');
+
+            // Calcular a posição do menu em relação ao botão dentro do contêiner
+            const rect = button.getBoundingClientRect();
+            dropdownMenu.style.top = `${rect.bottom + window.scrollY}px`; // Posicionar abaixo do botão
+            dropdownMenu.style.left = `${rect.left + window.scrollX}px`;
+
+            // Conteúdo do menu com ações
+            dropdownMenu.innerHTML = `
+                <a class="dropdown-item" href="#" onclick="viewProfile('${contactName} ${id}')">View profile</a>
+                <a class="dropdown-item" href="#" onclick="addFriend('${contactName} ${id}')">Add friend</a>
+                <a class="dropdown-item" href="#" onclick="deleteFriend('${contactName} ${id}')">Delete friend</a>
+                <a class="dropdown-item" href="#" onclick="challengeToMatch('${contactName} ${id}')">Challenge to match</a>
+            `;
+
+            document.body.appendChild(dropdownMenu);
+
+            // Remover o menu ao clicar em uma opção ou sair com o mouse
+            dropdownMenu.addEventListener('mouseleave', removeDropdownMenu);
+            dropdownMenu.addEventListener('click', removeDropdownMenu);
+        }
+        
+        function removeDropdownMenu() {
+            const existingMenu = document.querySelector('.dropdown-menu');
+            if (existingMenu) {
+                existingMenu.remove();
+            }
+        }
+
+
+
 
         //funções abaixo serão substituídas pelo uso de htmx
         function changeChat(contactName) {

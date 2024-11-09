@@ -83,7 +83,15 @@
         margin: 0 30px;
         }
 
-
+        #f3p2 {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8); /* Fundo semitransparente */
+            border-radius: 8px;
+            padding: 10px;
+            width: 200px; /* Ajuste conforme necessário */
+            z-index: 1000; /* Garante que o elemento fique acima de outros */
+            background-color: #f0f0f0; /* Cor do texto */
+        }
 
     </style>
 
@@ -146,7 +154,7 @@
     </nav>
     <!-- Navbar -->
     <div class=" full-height justify-content-center align-items-center">
-        <div class="card">
+        <div class="card areaTournament">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="lines"></div>
@@ -156,18 +164,18 @@
 
                                 <div id="f1p1" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p1_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p1_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -175,18 +183,18 @@
                                 
                                 <div id="f1p2" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p2_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p2_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -194,18 +202,18 @@
 
                                 <div id="f1p3" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p3_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p3_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -213,18 +221,18 @@
 
                                 <div id="f1p4" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p4_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p4_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -235,18 +243,18 @@
                                
                                 <div id="f2p1" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p1_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p1_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -254,18 +262,18 @@
                                 
                                 <div id="f2p2" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p2_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p2_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -281,18 +289,18 @@
 
                                 <div id="f3p1" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f3p1_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f3p1_p3" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -307,18 +315,18 @@
                                 
                                 <div id="f2p3" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p3_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p3_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -326,18 +334,18 @@
                                 
                                 <div id="f2p4" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p4_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f2p4_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -348,18 +356,18 @@
                                 
                                 <div id="f1p5" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p5_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p5_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -367,18 +375,18 @@
                                 
                                 <div id="f1p6" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p6_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p6_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -386,18 +394,18 @@
                                 
                                 <div id="f1p7" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p7_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p7_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -405,18 +413,18 @@
                                 
                                 <div id="f1p8" class="matchup d-flex flex-column justify-content-center align-items-center" >
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-danger text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p8_p1" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row m-1 p-1">
-                                        <div class="p-1 playerMatch list-group-item-success text-white d-flex justify-content-between align-items-center">
+                                        <div id="f1p8_p2" class="p-1 playerMatch list-group-item-secondary text-white d-flex justify-content-between align-items-center">
                                             <div class="col d-flex justify-content-center align-items-center">
                                                 <img src="assets/profileDefault.png" class="rounded-circle" height="50" alt="et photo" loading="lazy" />
-                                                <span>lorem ipsum</span>
+                                                <span>waiting...</span>
                                             </div>
                                         </div>
                                     </div>
@@ -446,15 +454,7 @@
         - fechar div de acordo com os brackets do torneio
         - título
         - aplicar brilho
-    
-    - partida
-        - criar terceiro lugar (match)
-        - criar card 'ghost' para preencher partir
-    
-    - linhas (vai gerar mufança na assinatura da função create_line)
-        - criar linhas fixadas nas partidas
-        - injetar cores de acordo com a resposta do back - mock
-    
+      
     - dinâmica de tela
         - criar card temporizador.
 -->

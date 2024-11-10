@@ -152,7 +152,7 @@ $(document).ready(function() {
         line5.y = line4.y + offset.y
         line5.length = base.x_step
         createLine(('line9' + m_f1.getAttribute('id')),'h', 
-        (match1 === 'finished' || match1 === 'finished' ? 'finished' : 'default'), line5);
+        ((match1 === 'finished' || match2 === 'finished') ? 'finished' : 'default'), line5);
     }
 
     function createMatchBracket(m_f1, m_f2, winnerPlayer, direction) {

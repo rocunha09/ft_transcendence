@@ -1,9 +1,9 @@
 # ft_transcendence
-Telas do projeto ft_transcendence da 42 School
+Front-End do projeto ft_transcendence da 42 School
 
 ### recursos:
-- fFoi utilizado bootstrap 4 (HTML5, CSS3, JQuery);
-  - *O único recurso permitido nos requisitos do projeto;
+- Foi utilizado bootstrap 4 (HTML5, CSS3, JQuery);
+  - *O único recurso permitido nos requisitos do projeto;*
 - Imagens para decorar diversas partes da aplicação;
 - A aplicação é um SPA então cada tela na verdade é um "fragmento" que será inserido na tela base;
 

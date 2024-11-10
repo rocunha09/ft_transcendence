@@ -1,0 +1,133 @@
+.navbar-nav .nav-link {
+    font-size: 1.2rem;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.areaTournament {
+    margin: 25px 100px 0 100px;
+}
+
+.areaTournament-glow {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    transition: box-shadow 0.3s ease;
+}
+
+.areaTournament-glow:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); 
+}
+
+.bracket {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.round {
+    width: 500px;
+    margin: 0 50px 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.matchup {
+    width: 200px;
+    height: 150px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.playerMatch {
+    border-radius: 10px;
+}
+
+span {
+    color: black;
+}
+
+.final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.final-matchup {
+    background-color: #e0e0e0;
+    text-align: center;
+    line-height: 75px;
+    border: 2px solid #aaa;
+}
+
+.round-2 .matchup {
+    margin: 30px 0;
+}
+
+.round-3 .matchup {
+    margin: 0 30px;
+}
+
+#f3p2 {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fundo semitransparente */
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    /* Ajuste conforme necessário */
+    z-index: 1000;
+    /* Garante que o elemento fique acima de outros */
+    background-color: #f0f0f0;
+    /* Cor do texto */
+}
+
+.popup-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1042;
+    width: 600px; 
+    height: 400px; 
+    display: none; 
+    background-color: white;
+}
+
+.imageTimer {
+    width: 150px;
+    padding-bottom: 20px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 120px); 
+}
+
+.card-footer {
+    display: flex;
+    padding: 0;
+    height: 62px; 
+}
+
+.card-footer .btn {
+    width: 50%;
+    height: 100%; 
+    border-radius: 0; 
+}

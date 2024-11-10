@@ -1,20 +1,4 @@
 $(document).ready(function() {
-    /**
-     * pega dados do back
-     */
-    function matchFinished(match1, match2) {
-        //requisição para o back
-        return null;
-    }
-    
-    /**
-     * pega dados do back
-     */
-    function winnerPlayer(match) {
-        //requisição para o back
-        return null;
-    }
-
     function put_color(match, player, status) {
         let matchId = match.getAttribute("id")
         let id = `#${matchId}_${player}`
@@ -27,17 +11,18 @@ $(document).ready(function() {
     }
 
     function createLine(id, type, definition, coordinate) {
-        var line = $('<div class="line ' + type + ' ' + definition + '" id="' + id + '"></div>');
-
+        let line = $('<div class="line ' + type + ' ' + definition + '" id="' + id + '"></div>');
+        
         line.css({
             'position': 'absolute',
             'z-index': '10',
             'background-color': definition === 'winner' || definition === 'finished' ? '#32CD32' : '#000'
         });
-
+        
+        let thickness = 3
         if (type === 'v') {
             line.css({
-                'width': '2px',
+                'width': `${thickness}px`,
                 'top': (coordinate.y-75) + 'px',
                 'left': coordinate.x + 'px',
                 'height': coordinate.length + 'px'
@@ -45,7 +30,7 @@ $(document).ready(function() {
         }
         else if (type === 'h') {
             line.css({
-                'height': '2px',
+                'height': `${thickness}px`,
                 'top': (coordinate.y-75) + 'px',
                 'left': coordinate.x + 'px',
                 'width': coordinate.length + 'px'
@@ -155,6 +140,7 @@ $(document).ready(function() {
         line4.length = p2.y - (line3.y + line3.length)
         createLine(('line8' + m_f1.getAttribute('id')),'v', match2, line4);
 
+        offset.y = -20
         let line5 = {
             x: 0,
             y: 0,
@@ -225,8 +211,8 @@ $(document).ready(function() {
          * DEFINE OFFSETS PARA USO CASO SEJA NECESSÁRIO
          * */
         let offset = {
-            x: 0,
-            y: 0
+            x: 100,
+            y: -20
         }
         let line1 = {
             x: 0,
@@ -284,24 +270,6 @@ $(document).ready(function() {
         lines.innerHTML = ""
     }
 
-     /**
-     * PEGA OS PLAYERS QUE IRÃO DISPUTAR O TERCEIRO LUGAR;
-     */
-     function get3rdPlayersMatch() {
-        let player1 = {
-            name: 'waiting...',
-            photo: 'assets/profileDefault.png'
-        }
-
-        let player2 = {
-            name: 'waiting...',
-            photo: 'assets/profileDefault.png'
-        }
-
-        let players = [player1, player2]
-        return players;
-    }
-
     function create3rd(players) {
         let htmlContent =`<div id="f3p2" class="matchup d-flex flex-column justify-content-center align-items-center" >
                             <div class="row m-1 p-1">
@@ -322,11 +290,15 @@ $(document).ready(function() {
                             </div>
                         </div> `
 
+        let offset = {
+            x: 100,
+            y: -20
+        }
         let lines = document.querySelector('.lines');
         let div3rdMatch = document.createElement('div');
         div3rdMatch.innerHTML = htmlContent;
         lines.appendChild(div3rdMatch);
-
+        
         let finalMatch = document.querySelector('#f3p1');
         let xFinalMatch = finalMatch.getBoundingClientRect().left;
         let yFinalMatch = finalMatch.getBoundingClientRect().top;
@@ -334,13 +306,13 @@ $(document).ready(function() {
         let _3rdMatch = document.querySelector('#f3p2');
         let y_3rdMatch = yFinalMatch + 150;
 
+        xFinalMatch -= offset.x
+        y_3rdMatch += offset.y
+
         _3rdMatch.style.left = `${xFinalMatch}px`;
         _3rdMatch.style.top = `${y_3rdMatch}px`;
     }
    
-    /**
-     * EXECUTA A CRIAÇÃO DOS BRACKETS
-     * */
     var matchWidth = $(f1p1).css('width');
     var matchHeight = $(f1p1).css('height');
     function buildBrackets() {
@@ -387,53 +359,127 @@ $(document).ready(function() {
 
     }
 
-   
-    /**
-     * [EM CONSTRUÇÃO]
-     * IMPLEMENTAÇÃO DE ZOOM PARA QUANDO A TELA TER SUA 
-     * LARGURA MUITO REDUZIDA
-     */
-    var tournament = document.querySelector('.areaTournament')
-    var originalWidth = tournament.getBoundingClientRect().width;
-    function resizeTournament() {
-        minWidth = 1200;
-        actualWidth = tournament.getBoundingClientRect().width;
+    function cardTimer() {
+        let htmlContent = `<div id="cardTimer" class="card popup-card">
+                                <div class="card-header text-center">
+                                    <h5>
+                                        Loading...
+                                    </h5>
+                                </div>
+                                <div class="card-body text-center">
+                                    <img class="imageTimer" src="assets/timer.png" alt="Timer">
+                                    <p id="timerDisplay" style="font-size: 2rem;">
+                                        01:00
+                                    </p> 
+                                </div>
+                                <div class="card-footer">
+                                    <button id="cancelButton" class="btn btn-danger">
+                                        Desistir
+                                    </button>
+                                    <button id="readyButton" class="btn btn-success">
+                                        Estou Pronto
+                                    </button>
+                                </div>
+                            </div>` 
         
-        let scale = actualWidth / originalWidth;
-        if (scale < 0.5) {
-            scale = 0.5;
-        }
+        let lines = document.querySelector('.lines');
+        let cardTimer = document.createElement('div');
+        cardTimer.innerHTML = htmlContent;
+        lines.appendChild(cardTimer);
 
-        document.body.style.transform = `scale(${scale})`;
-        document.body.style.transformOrigin = 'top left';
 
     }
 
-    /**
-     * CRIAÇÃO INICIAL DOS BRACKETS
-     * */
+    function startCountdown(duration, display) {
+        let timer = duration, minutes, seconds;
+        const countdownInterval = setInterval(() => {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(countdownInterval);
+                display.textContent = "Tempo esgotado!";
+            }
+        }, 1000);
+    }
+
+    function exibeCardTimer () {
+        const countdownCard = document.querySelector("#cardTimer");
+        const timerDisplay = document.querySelector("#timerDisplay");
+        
+        countdownCard.style.display = "block"; 
+        startCountdown(60, timerDisplay); 
+    }
+   
+    /*********************  CONSTRÓI ELEMENTOS NA TELA  *********************/
+    
     buildBrackets();
     create3rd(get3rdPlayersMatch());
-
-    /**
-     * CRIAÇÃO DOS BRACKETS SE HOUVER RESIZE DA TELA
-     * */
-    window.onresize = function(){
+    cardTimer();
+   
+    window.onresize = () =>{
         //resizeTournament();
         buildBrackets();
         create3rd(get3rdPlayersMatch());
     }
 
-    /**
-     * FUNÇÃO TEMPORÁRIA, UTILIZADA PARA DESENVOLVIMENTO
-     * */
-    document.addEventListener('mousemove', function(event) {
-        // Obtém as coordenadas X e Y do mouse
-        var x = event.clientX; // Posição X do mouse
-        var y = event.clientY; // Posição Y do mouse
+    /************************************************************************/
 
-        // Print no terminal (console) do navegador
-        console.log('Posição do mouse - X: ' + x + ', Y: ' + y);
+    /**
+     * PEGA OS PLAYERS QUE IRÃO DISPUTAR O TERCEIRO LUGAR POR RQUISIÇÃO NO BACK;
+     */
+    function get3rdPlayersMatch() {
+        let player1 = {
+            name: 'waiting...',
+            photo: 'assets/profileDefault.png'
+        }
+
+        let player2 = {
+            name: 'waiting...',
+            photo: 'assets/profileDefault.png'
+        }
+
+        let players = [player1, player2]
+        return players;
+    }
+
+    /**
+     * MOCK PARA TESTE - DEVE-SE REALIZAR REQUISIÇÃO PARA OBTER DADOS DO BACK
+     */
+    function matchFinished(match1, match2) {
+        //requisição para o back
+        return null;
+    }
+    
+    /**
+     * MOCK PARA TESTE - DEVE-SE REALIZAR REQUISIÇÃO PARA OBTER DADOS DO BACK
+     */
+    function winnerPlayer(match) {
+        //requisição para o back
+        return null;
+    }
+    /**
+     * FUNÇÃO TEMPORÁRIA, A EXIBIÇÃO DO CARD TIMER DEVE
+     * SER DAR PELO EVENTO DO BACK QUANDO TIVER UMA PARTIDA PREENCHIDA COM 2 JOGADOEES
+     */
+    window.onclick = () => {
+        exibeCardTimer();
+    }
+
+    /**
+     * AÇÕES DOS BOTÕES DO CARD TIMER, DEVEM SER PARAMETRIZADAS DE ACORDO COM O BACK
+     */
+    document.querySelector("#cancelButton").addEventListener("click", () => {
+        document.querySelector('#cardTimer').remove()
+    });
+
+    document.querySelector("#readyButton").addEventListener("click", () => {
+        document.querySelector('#cardTimer').remove()
     });
 
 });

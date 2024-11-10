@@ -26,7 +26,7 @@ $(document).ready(function() {
         p.classList.add(`list-group-item-${status}`)
     }
 
-    function createLine(id, type, definition, x, y, length) {
+    function createLine(id, type, definition, coordinate) {
         var line = $('<div class="line ' + type + ' ' + definition + '" id="' + id + '"></div>');
 
         line.css({
@@ -38,24 +38,24 @@ $(document).ready(function() {
         if (type === 'v') {
             line.css({
                 'width': '2px',
-                'top': (y-75) + 'px',
-                'left': x + 'px',
-                'height': length + 'px'
+                'top': (coordinate.y-75) + 'px',
+                'left': coordinate.x + 'px',
+                'height': coordinate.length + 'px'
             });
         }
         else if (type === 'h') {
             line.css({
                 'height': '2px',
-                'top': (y-75) + 'px',
-                'left': x + 'px',
-                'width': length + 'px'
+                'top': (coordinate.y-75) + 'px',
+                'left': coordinate.x + 'px',
+                'width': coordinate.length + 'px'
             });
         }
 
         $('.lines').append(line);
     }
 
-    function createPhaseBrackets(xy_p1, xy_p2, m_f1, m_f2, MatchFinished, direction) {
+    function createPhaseBrackets(p1, p2, m_f1, m_f2, MatchFinished, direction) {
         /**
         * DEFINE A COR DA LINHA DE ACORDO COM O VENCEDOR
         * */
@@ -76,88 +76,97 @@ $(document).ready(function() {
          * OBTÉM (X,Y) INICIAL DA PARTIDA DA PRÓXIMA FASE E DEFINE O ALVO PARA FIM DA LINHA
          * */
         //(x,y) match
-        let match_f2 = [0,0]
-        match_f2[0] = parseFloat(m_f2.getBoundingClientRect().left);
-        match_f2[1] = parseFloat(m_f2.getBoundingClientRect().top);
-        match_f2[1] += (parseFloat(matchHeight.replace('px', '')) / 2)
+        let match_f2 = {
+            x: parseFloat(m_f2.getBoundingClientRect().left),
+            y: parseFloat(m_f2.getBoundingClientRect().top)
+        }
+        match_f2.y += (parseFloat(matchHeight.replace('px', '')) / 2)
 
         /**
          *DEFINE O STEPS X PARA CÁLCULO DE COMPRIMENTO DA LINHA
          * */
-         let x1_lines_h = 0;
-         let x_step = 0;
+         let base = {
+            x: 0,
+            y: 0,
+            x_step: 0,
+            y_step:0
+        }
          if(direction === 1) {
-             x1_lines_h = parseFloat(m_f1.getBoundingClientRect().left) + parseFloat(matchWidth.replace('px', '')) 
-             x_step = (match_f2[0] - x1_lines_h) / 3
+             base.x = parseFloat(m_f1.getBoundingClientRect().left) + parseFloat(matchWidth.replace('px', '')) 
+             base.x_step = (match_f2.x - base.x) / 3
          }
          else if(direction === -1) {
-             x1_lines_h = parseFloat(m_f1.getBoundingClientRect().left)
-             x_step = (x1_lines_h - (match_f2[0] + parseFloat(matchWidth.replace('px', '')))) / 3
+             base.x = parseFloat(m_f1.getBoundingClientRect().left)
+             base.x_step = (base.x - (match_f2.x + parseFloat(matchWidth.replace('px', '')))) / 3
          }                
 
          /**
          * CALCULA O (X,Y) INICIAL DAS LINHAS E SEUS COMPRIMENTOS PARA ENTÃO CRIAR A LINHA NA TELA
          * DEFINE OFFSETS PARA USO CASO SEJA NECESSÁRIO
          * */
-        let offset_x = 0;
-        let offset_y = 0;
-        let line1 = [0,0]
-        let length_l1 = 0
-        //(x,y) inicial
-        if(direction === 1) {
-            line1[0] = xy_p1[0]                         - offset_x
+        let offset = {
+            x: 0,
+            y: 0
         }
-        else if(direction === -1) {
-            line1[0] = xy_p1[0] - x_step                - offset_x
-        }
-        line1[1] = xy_p1[1]                             + offset_y
-        //comprimento da linha
-        length_l1 = x_step
-        createLine(('line5' + m_f1.getAttribute('id')),'h', match1, line1[0], line1[1], length_l1);
 
-        let line2 = [0,0]
-        let length_l2 = 0
-        if(direction === 1) {
-            line2[0] = xy_p2[0]                         - offset_x
+        let line1 = {
+            x: 0,
+            y: 0,
+            length:0
         }
-        else if(direction === -1) {
-            line2[0] = xy_p2[0] - x_step                - offset_x
-        }
-        line2[1] = xy_p2[1]                             + offset_y
-        length_l2 = x_step
-        createLine(('line6' + m_f1.getAttribute('id')),'h', match2, line2[0], line2[1], length_l2);
+        direction === 1 ?
+            line1.x = p1.x - offset.x :
+            line1.x = p1.x - base.x_step - offset.x;
+        line1.y = p1.y + offset.y
+        line1.length = base.x_step
+        createLine(('line5' + m_f1.getAttribute('id')),'h', match1, line1);
 
-        let line3 = [0,0]
-        let length_l3 = 0
-        if(direction === 1) {
-            line3[0] = line1[0] + x_step                - offset_x
+        let line2 = {
+            x: 0,
+            y: 0,
+            length:0
         }
-        else if(direction === -1) {
-            line3[0] = line1[0]                         - offset_x
-        }
-        line3[1] = line1[1]                             + offset_y
-        length_l3 = match_f2[1] - line3[1]
-        createLine(('line7' + m_f1.getAttribute('id')),'v', match1, line3[0], line3[1], length_l3);
+        direction === 1 ?
+            line2.x = p2.x - offset.x :
+            line2.x = p2.x - base.x_step - offset.x;
+        line2.y = p2.y + offset.y
+        line2.length = base.x_step
+        createLine(('line6' + m_f1.getAttribute('id')),'h', match2, line2);
 
-        let line4 = [0,0]
-        let length_l4 = 0
-        line4[0] = line3[0]                             - offset_x
-        line4[1] = match_f2[1]                          + offset_y
-        length_l4 = xy_p2[1] - (line3[1] + length_l3)
-        createLine(('line8' + m_f1.getAttribute('id')),'v', match2, line4[0], line4[1], length_l4);
+        let line3 = {
+            x: 0,
+            y: 0,
+            length:0
+        }
+        direction === 1 ?
+            line3.x = line1.x + base.x_step - offset.x :
+            line3.x = line1.x - offset.x;
+        line3.y = line1.y + offset.y
+        line3.length = match_f2.y - line3.y
+        createLine(('line7' + m_f1.getAttribute('id')),'v', match1, line3);
 
-        let line5 = [0,0]
-        let length_l5 = 0
-        if(direction === 1) { 
-            line5[0] = line4[0]                         - offset_x
+        let line4 = {
+            x: 0,
+            y: 0,
+            length:0
         }
-        else if(direction === -1) {
-            line5[0] = line4[0] - x_step                - offset_x
+        line4.x = line3.x - offset.x
+        line4.y = match_f2.y + offset.y
+        line4.length = p2.y - (line3.y + line3.length)
+        createLine(('line8' + m_f1.getAttribute('id')),'v', match2, line4);
+
+        let line5 = {
+            x: 0,
+            y: 0,
+            length:0
         }
-        line5[1] = line4[1]                             + offset_y
-        length_l5 = x_step
+        direction === 1 ?
+            line5.x = line4.x - offset.x :
+            line5.x = line4.x - base.x_step - offset.x;
+        line5.y = line4.y + offset.y
+        line5.length = base.x_step
         createLine(('line9' + m_f1.getAttribute('id')),'h', 
-        (match1 === 'finished' || match1 === 'finished' ? 'finished' : 'default'), line5[0], line5[1], length_l5);
+        (match1 === 'finished' || match1 === 'finished' ? 'finished' : 'default'), line5);
     }
 
     function createMatchBracket(m_f1, m_f2, winnerPlayer, direction) {
@@ -182,87 +191,90 @@ $(document).ready(function() {
         /**
          * OBTÉM (X,Y) INICIAL DE CADA PARTIDA PARA CÁLCULO DAS LINHAS
          * */
-        //(x,y) match1
-        let match_f1 = [0,0]
-        match_f1[0] = parseFloat(m_f1.getBoundingClientRect().left);
-        match_f1[1] = parseFloat(m_f1.getBoundingClientRect().top);
+        let match_f1 = {
+            x: parseFloat(m_f1.getBoundingClientRect().left),
+            y: parseFloat(m_f1.getBoundingClientRect().top)
+        }
 
-        //(x,y) match2
-        let match_f2 = [0,0]
-        match_f2[0] = parseFloat(m_f2.getBoundingClientRect().left);
-        match_f2[1] = parseFloat(m_f2.getBoundingClientRect().top);
+        let match_f2 = {
+            x: parseFloat(m_f2.getBoundingClientRect().left),
+            y: parseFloat(m_f2.getBoundingClientRect().top)
+        }
 
         /**
          * CALCULA O PONTO DE PARTIDA DAS LINHAS EM X E DEFINE O STEPS (X, Y) PARA CÁLCULO DE COMPRIMENTO DA LINHA
          * */
-        let x1_lines_h = 0;
-        let x_step = 0;
+        let base = {
+            x: 0,
+            y: 0,
+            x_step: 0,
+            y_step:0
+        }
         if(direction === 1) {
-            x1_lines_h = match_f1[0] + parseFloat(matchWidth.replace('px', '')) 
-            x_step = (match_f2[0] - x1_lines_h) / 3
+            base.x = match_f1.x + parseFloat(matchWidth.replace('px', '')) 
+            base.x_step = (match_f2.x - base.x) / 3
         }
         else if(direction === -1) {
-            x1_lines_h = match_f1[0] 
-            x_step = (x1_lines_h - (match_f2[0] + parseFloat(matchWidth.replace('px', '')))) / 3
+            base.x = match_f1.x 
+            base.x_step = (base.x - (match_f2.x + parseFloat(matchWidth.replace('px', '')))) / 3
         }                
-        let y_step = parseFloat(matchHeight.replace('px', '')) / 4
-        
+        base.y_step = parseFloat(matchHeight.replace('px', '')) / 4
 
         /**
          * CALCULA O (X,Y) INICIAL DAS LINHAS E SEUS COMPRIMENTOS PARA ENTÃO CRIAR A LINHA NA TELA
          * DEFINE OFFSETS PARA USO CASO SEJA NECESSÁRIO
          * */
-        let offset_x = 0;
-        let offset_y = 0;
-        let line1 = [0,0]
-        let length_l1 = 0
-        //(x,y) inicial
-        if(direction === 1) {
-            line1[0] = x1_lines_h                       - offset_x
+        let offset = {
+            x: 0,
+            y: 0
         }
-        else if(direction === -1) {
-            line1[0] = x1_lines_h - x_step              - offset_x
+        let line1 = {
+            x: 0,
+            y: 0,
+            length: 0
         }
-        line1[1] = match_f1[1] + y_step                 + offset_y
-        //comprimento da linha
-        length_l1 = x_step
-        createLine(('line1_' + m_f1.getAttribute('id')),'h', player1, line1[0], line1[1], length_l1);
+        direction === 1 ?
+            line1.x = base.x - offset.x :
+            line1.x = base.x - base.x_step - offset.x;
+        line1.y = match_f1.y + base.y_step + offset.y
+        line1.length = base.x_step
+        createLine(('line1_' + m_f1.getAttribute('id')),'h', player1, line1);
         
-        let line2 = [0,0]
-        let length_l2 = 0
-        if(direction === 1) {
-            line2[0] = x1_lines_h                       - offset_x
+        let line2 = {
+            x: 0,
+            y: 0,
+            length: 0
         }
-        else if(direction === -1) {
-            line2[0] = x1_lines_h - x_step              - offset_x
-        }
-        line2[1] = match_f1[1] + (3 * y_step)           + offset_y
-        length_l2 = x_step
-        createLine(('line2_' + m_f1.getAttribute('id')),'h', player2, line2[0], line2[1], length_l2);
+        direction === 1 ?
+            line2.x = base.x - offset.x :
+            line2.x = base.x - base.x_step - offset.x;
+        line2.y = match_f1.y + (3 * base.y_step) + offset.y
+        line2.length = base.x_step
+        createLine(('line2_' + m_f1.getAttribute('id')),'h', player2, line2);
         
-        let line3 = [0,0]
-        let length_l3 = 0
-        if(direction === 1) {
-            line3[0] = x1_lines_h + x_step              - offset_x
+        let line3 = {
+            x: 0,
+            y: 0,
+            length: 0
         }
-        else if(direction === -1) {
-            line3[0] = x1_lines_h - x_step              - offset_x
-        }
-        line3[1] = match_f1[1] + y_step                 + offset_y
-        length_l3 = y_step
-        createLine(('line3_' + m_f1.getAttribute('id')),'v', player1, line3[0], line3[1], length_l3);
+        direction === 1 ?
+            line3.x = base.x + base.x_step - offset.x :
+            line3.x = base.x - base.x_step - offset.x;
+        line3.y = match_f1.y + base.y_step + offset.y
+        line3.length = base.y_step
+        createLine(('line3_' + m_f1.getAttribute('id')),'v', player1, line3);
 
-        let line4 = [0,0]
-        let length_l4 = 0
-        if(direction === 1) {
-            line4[0] = x1_lines_h + x_step              - offset_x
+        let line4 = {
+            x: 0,
+            y: 0,
+            length: 0
         }
-        else if(direction === -1) {
-            line4[0] = x1_lines_h - x_step              - offset_x
-        }
-        line4[1] = match_f1[1] + (2 * y_step)           + offset_y
-        length_l4 = y_step
-        createLine(('line4_' + m_f1.getAttribute('id')),'v', player2, line4[0], line4[1], length_l4);
+        direction === 1 ?
+            line4.x = base.x + base.x_step - offset.x :
+            line4.x = base.x - base.x_step - offset.x;
+        line4.y = match_f1.y + (2 * base.y_step) + offset.y
+        line4.length = base.y_step
+        createLine(('line4_' + m_f1.getAttribute('id')),'v', player2, line4);
 
         return line4;
     }
@@ -351,27 +363,27 @@ $(document).ready(function() {
         let f1p8 = document.getElementById('f1p8');
 
         destroyBrackets();
-        let xy_brkt_f1p1 = createMatchBracket(f1p1, f2p1, winnerPlayer(f1p1), 1)
-        let xy_brkt_f1p2 = createMatchBracket(f1p2, f2p1, winnerPlayer(f1p2), 1)
-        let xy_brkt_f1p3 = createMatchBracket(f1p3, f2p2, winnerPlayer(f1p3), 1)
-        let xy_brkt_f1p4 = createMatchBracket(f1p4, f2p2, winnerPlayer(f1p4), 1)
-        let xy_brkt_f2p1 = createMatchBracket(f2p1, f3p1, winnerPlayer(f2p1), 1)
-        let xy_brkt_f2p2 = createMatchBracket(f2p2, f3p1, winnerPlayer(f2p2), 1)
+        let brkt_f1p1 = createMatchBracket(f1p1, f2p1, winnerPlayer(f1p1), 1)
+        let brkt_f1p2 = createMatchBracket(f1p2, f2p1, winnerPlayer(f1p2), 1)
+        let brkt_f1p3 = createMatchBracket(f1p3, f2p2, winnerPlayer(f1p3), 1)
+        let brkt_f1p4 = createMatchBracket(f1p4, f2p2, winnerPlayer(f1p4), 1)
+        let brkt_f2p1 = createMatchBracket(f2p1, f3p1, winnerPlayer(f2p1), 1)
+        let brkt_f2p2 = createMatchBracket(f2p2, f3p1, winnerPlayer(f2p2), 1)
         
-        let xy_brkt_f2p3 = createMatchBracket(f2p3, f3p1, winnerPlayer(f2p3), -1)
-        let xy_brkt_f2p4 = createMatchBracket(f2p4, f3p1, winnerPlayer(f2p4), -1)
-        let xy_brkt_f1p5 = createMatchBracket(f1p5, f2p3, winnerPlayer(f1p5), -1)
-        let xy_brkt_f1p6 = createMatchBracket(f1p6, f2p3, winnerPlayer(f1p6), -1)
-        let xy_brkt_f1p7 = createMatchBracket(f1p7, f2p4, winnerPlayer(f1p7), -1)
-        let xy_brkt_f1p8 = createMatchBracket(f1p8, f2p4, winnerPlayer(f1p8), -1)
-
-        createPhaseBrackets(xy_brkt_f1p1, xy_brkt_f1p2, f1p1, f2p1, matchFinished(f1p1, f1p2), 1)
-        createPhaseBrackets(xy_brkt_f1p3, xy_brkt_f1p4, f1p3, f2p2, matchFinished(f1p3, f1p4), 1)
-        createPhaseBrackets(xy_brkt_f2p1, xy_brkt_f2p2, f2p1, f3p1, matchFinished(f2p1, f2p2), 1)
+        let brkt_f2p3 = createMatchBracket(f2p3, f3p1, winnerPlayer(f2p3), -1)
+        let brkt_f2p4 = createMatchBracket(f2p4, f3p1, winnerPlayer(f2p4), -1)
+        let brkt_f1p5 = createMatchBracket(f1p5, f2p3, winnerPlayer(f1p5), -1)
+        let brkt_f1p6 = createMatchBracket(f1p6, f2p3, winnerPlayer(f1p6), -1)
+        let brkt_f1p7 = createMatchBracket(f1p7, f2p4, winnerPlayer(f1p7), -1)
+        let brkt_f1p8 = createMatchBracket(f1p8, f2p4, winnerPlayer(f1p8), -1)
         
-        createPhaseBrackets(xy_brkt_f2p3, xy_brkt_f2p4, f2p3, f3p1, matchFinished(f2p3, f2p4), -1)
-        createPhaseBrackets(xy_brkt_f1p5, xy_brkt_f1p6, f1p5, f2p3, matchFinished(f1p5, f1p6), -1)
-        createPhaseBrackets(xy_brkt_f1p7, xy_brkt_f1p8, f1p6, f2p4, matchFinished(f1p7, f1p8), -1)
+        createPhaseBrackets(brkt_f1p1, brkt_f1p2, f1p1, f2p1, matchFinished(f1p1, f1p2), 1)
+        createPhaseBrackets(brkt_f1p3, brkt_f1p4, f1p3, f2p2, matchFinished(f1p3, f1p4), 1)
+        createPhaseBrackets(brkt_f2p1, brkt_f2p2, f2p1, f3p1, matchFinished(f2p1, f2p2), 1)
+        
+        createPhaseBrackets(brkt_f2p3, brkt_f2p4, f2p3, f3p1, matchFinished(f2p3, f2p4), -1)
+        createPhaseBrackets(brkt_f1p5, brkt_f1p6, f1p5, f2p3, matchFinished(f1p5, f1p6), -1)
+        createPhaseBrackets(brkt_f1p7, brkt_f1p8, f1p6, f2p4, matchFinished(f1p7, f1p8), -1)
 
     }
 

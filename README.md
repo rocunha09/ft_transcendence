@@ -1,7 +1,7 @@
 # ft_transcendence
 Front-End do projeto ft_transcendence da 42 School
 
-### recursos:
+### Recursos:
 - Foi utilizado bootstrap 4 (HTML5, CSS3, JQuery);
   - *O único recurso permitido nos requisitos do projeto;*
 - Imagens para decorar diversas partes da aplicação;
@@ -14,18 +14,19 @@ Front-End do projeto ft_transcendence da 42 School
 - ✅ fragment painel login
 - ✅ fragment "esqueci minha senha"
 - ✅ fragment perfil usuario
+- 🚧 fragment perfil público
 - ✅ fragment histórico partidas
 - ✅ fragment torneio
 - ✅ fragment chat
-- 🚧 fragment perfil público
 - 🚧 fragment badges
 - 🚧 fragment match
 
 ## TELA BASE
+![.](preview/base.png)
 
 
 ## FRAGMENT NAVBAR
-
+![.](preview/navbar.png)
 
 ## FRAGMENT PAINEL LOGIN
 
@@ -36,17 +37,19 @@ Front-End do projeto ft_transcendence da 42 School
 ## FRAGMENT PERFIL USUARIO
 
 
+## FRAGMENT PERFIL PÚBLICO
+
+
 ## FRAGMENT HISTÓRICO PARTIDAS
 
 
 ## FRAGMENT TORNEIO
-
+![.](preview/tournament1.png)
+![.](preview/tournament2.png)
+![.](preview/tournament3.png)
 
 ## FRAGMENT CHAT
-
-
-## FRAGMENT PERFIL PÚBLICO
-
+![.](preview/chat.png)
 
 ## FRAGMENT BADGES
 

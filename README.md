@@ -43,7 +43,8 @@ Front-End do projeto ft_transcendence da 42 School
 ![.](preview/login7.png)
 
 ## FRAGMENT PERFIL USUARIO
-
+![.](preview/profile1.png)
+![.](preview/profile2.png)
 
 ## FRAGMENT PERFIL PÚBLICO
 

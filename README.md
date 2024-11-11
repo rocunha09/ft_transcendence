@@ -15,7 +15,7 @@ Front-End do projeto ft_transcendence da 42 School
 - ✅ fragment "esqueci minha senha"
 - ✅ fragment perfil usuario
 - 🚧 fragment perfil público
-- ✅ fragment histórico partidas
+- 🚧 fragment histórico partidas
 - ✅ fragment torneio
 - ✅ fragment chat
 - 🚧 fragment badges

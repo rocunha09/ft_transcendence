@@ -29,10 +29,18 @@ Front-End do projeto ft_transcendence da 42 School
 ![.](preview/navbar.png)
 
 ## FRAGMENT PAINEL LOGIN
-
+![.](preview/login1.png)
+![.](preview/login2.png)
 
 ## FRAGMENT "ESQUECI MINHA SENHA"
+![.](preview/esqueci_minha_senha.png)
+![.](preview/esqueci_minha_senha2.png)
 
+![.](preview/login3.png)
+![.](preview/login4.png)
+![.](preview/login5.png)
+![.](preview/login6.png)
+![.](preview/login7.png)
 
 ## FRAGMENT PERFIL USUARIO
 

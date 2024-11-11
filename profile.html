@@ -10,63 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* Aumentar o tamanho da letra da navbar */
-        .navbar-nav .nav-link {
-            font-size: 1.2rem;
-            /* Aumente conforme necessário */
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .card-profile {
-            max-width: 800px;
-            margin: auto;
-            background-color: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .card-profile:hover {
-            box-shadow: 0 0 35px rgba(255, 255, 255, 1);
-        }
-
-        .card-body {
-            padding: 2rem;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .form-control[readonly] {
-            background-color: #f8f9fa;
-            opacity: 1;
-        }
-
-        .edit-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 0.8rem;
-            padding: 5px 10px;
-            width: 100px;
-        }
-
-        #uploadImage {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="css/profile.css">
 
     <title>Profile</title>
 </head>
@@ -75,21 +19,16 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark bg-body-tertiary">
-        <!-- Container wrapper -->
         <div class="container-fluid">
-            <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- Collapsible wrapper -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <img src="assets/logo.png" height="50" alt="OVNI Logo" loading="lazy" />
                 </a>
-                <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Chat</a>
@@ -102,12 +41,9 @@
                     </li>
                 </ul>
             </div>
-            <!-- Collapsible wrapper -->
 
-            <!-- Right elements -->
             <div class="d-flex align-items-center">
 
-                <!-- Avatar -->
                 <div class="dropdown">
                     <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
                         id="navbarDropdownMenuAvatar" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -121,28 +57,21 @@
                     </ul>
                 </div>
             </div>
-            <!-- Right elements -->
         </div>
-        <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
 
     <div class="container full-height d-flex justify-content-center align-items-center">
         <div class="card card-profile">
             <div class="card-body">
-                <!-- Botão de edição -->
                 <button type="button" class="btn btn-warning edit-btn" id="editButton">Editar</button>
 
-                <!-- Área de imagem do perfil -->
                 <div class="profile-img" id="profileImg">
-                    <!-- Imagem de perfil -->
                     <img src="assets/profileDefault.png" class="rounded-circle" height="150" alt="User Photo">
                 </div>
 
-                <!-- Botão para carregar nova imagem -->
                 <input type="file" id="uploadImage" accept="image/*">
 
-                <!-- Campos read-only -->
                 <form id="profileForm">
                     <div class="row">
                         <div class="col">
@@ -184,51 +113,9 @@
         </div>
     </div>
 
-    <!-- Bootstrap and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- Script jQuery -->
-    <script>
-        $(document).ready(function () {
-            $('#editButton').on('click', function (event) {
-                event.preventDefault();
-
-                if ($(this).text() === 'Editar') {
-                    $(this).removeClass('btn-warning').addClass('btn-success').text('Salvar');
-                    $('#uploadImage').css('display', 'block');
-                    $('#userNameField').prop('readonly', false);
-                    $('#nicknameField').prop('readonly', false);
-                    $('#emailField').prop('readonly', false);
-                    $('#passwordField').prop('readonly', false);
-                    $('#confirmPasswordField').prop('readonly', false)
-                    $('#confirmPasswordDiv').css('display', 'block');
-                    $('#descriptionField').prop('readonly', false);
-                } else {
-                    if ($('#passwordField').val() !== $('#confirmPasswordField').val()) {
-                        alert('As senhas não conferem.');
-                    }
-                    else if ($('#userNameField').val() === '') {
-                        alert('O nome não pode ser vazio.');
-                    }
-                    else {
-                        $(this).removeClass('btn-success').addClass('btn-warning').text('Editar');
-                        $('#uploadImage').css('display', 'none');
-                        $('#userNameField').prop('readonly', true);
-                        $('#nicknameField').prop('readonly', true);
-                        $('#emailField').prop('readonly', true);
-                        $('#passwordField').prop('readonly', true);
-                        $('#confirmPasswordField').prop('readonly', true)
-                        $('#confirmPasswordDiv').css('display', 'none');
-                        $('#descriptionField').prop('readonly', true);
-
-                        // Chamar ajax se necessário
-                    }
-                }
-            });
-        }); 
-    </script>
+    <script src="js/profile.js"></script>
 
 </body>
 

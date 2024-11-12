@@ -33,4 +33,64 @@ $(document).ready(function () {
             }
         }
     });
+
+
+
+
+
+
+/********************************************************************/
+    /**
+     * ESSES DADOS VIRÃO DO BACK
+     */
+    const matchHistory = [
+        { opponent: "Alê Furona", result: "victory", score: "3-1" },
+        { opponent: "big", result: "defeat", score: "3-0" },
+        { opponent: "moaMinion", result: "victory", score: "3-0" },
+        { opponent: "theFingers", result: "victory", score: "3-1" },
+        { opponent: "dockerOnWindows", result: "defeat", score: "2-3" }
+    ];
+
+
+    function renderMatchHistory() {
+        const historyContainer = document.querySelector('.match-history');
+        historyContainer.innerHTML = '';
+
+        matchHistory.forEach(match => {
+            const matchElement = document.createElement('div');
+            matchElement.className = `match-history-item p-3 ${match.result} bg-light`;
+            
+            matchElement.innerHTML = ` <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>Opponent:</strong> ${match.opponent}
+                                            </div>
+                                            <div>
+                                                <span class="badge ${match.result === 'victory' ? 'badge-success' : 'badge-danger'}">
+                                                    ${match.result === 'victory' ? 'Victory' : 'Defeat'}
+                                                </span>
+                                                <span class="ml-2">${match.score}</span>
+                                            </div>
+                                        </div>`;
+
+            historyContainer.appendChild(matchElement);
+        });
+    }
+
+    function showProfile() {
+        document.querySelector('#profileModal').style.display = 'block';
+    }
+
+    function hideProfile() {
+        document.querySelector('#profileModal').style.display = 'none';
+    }
+
+    document.querySelector('#closeBtn').onclick = () => {
+        hideProfile();
+    }
+    window.onclick = () => {
+        hideProfile()
+    }
+
+    showProfile();
+    renderMatchHistory();
 }); 

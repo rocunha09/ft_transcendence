@@ -1,14 +1,14 @@
 
 body {
-  background-image: url('../assets/spaceship-wallpaper.jpg'); /* Caminho da imagem */
-  background-size: cover; /* Faz a imagem cobrir toda a área da página */
-  background-position: center; /* Centraliza a imagem */
-  background-attachment: fixed; /* Faz com que a imagem fique fixa no fundo */
-  background-repeat: no-repeat; /* Evita que a imagem se repita */
+  background-image: url('../assets/spaceship-wallpaper.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat; 
 }
 
 .full-height {
-  height: 100vh; /* Define a altura como 100% da altura da viewport */
+  height: 100vh;
 }
 
 .body-bg-color {
@@ -17,12 +17,12 @@ body {
 
 .card-glow {
   width: 18rem;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Sombra branca suave */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); 
   transition: box-shadow 0.3s ease;
 }
 
 .card-glow:hover {
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); /* Efeito de brilho mais forte ao passar o mouse */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 35px rgba(255, 255, 255, 0.6); 
 }
 
 
@@ -32,7 +32,7 @@ body {
 }
 
 .form-control {
-  margin-bottom: 1rem; /* Espaçamento entre campos */
+  margin-bottom: 1rem;
 }
 
 .form-group {
@@ -43,7 +43,7 @@ body {
   position: absolute;
   top: 10px;
   width: 100%;
-  z-index: 1050; /* Garante que o alerta está sobre o modal */
+  z-index: 1050;
 }
 
 .switch-container {
@@ -55,9 +55,10 @@ body {
 }
 
 .btn {
-  width: 100%; /* Botões preenchendo a largura do card */
+  width: 100%; 
 }
 
 .hidden {
   display: none;
 }
+

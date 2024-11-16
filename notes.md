@@ -1,86 +1,86 @@
 ## badges
 
-1. Perfil Completo
+1. Complete Profile
 
-    1.1 Toalha
+    1.1 Towel - Complete the Profile with New photo and Description.
    </br>
-    ![.](assets/towel_icon.png)
+   <img style="width: 250px" src="assets/towel_icon.png" >
 
 </br></br>
 
-2. Convidar outras pessoa
+2. Invite Peoples
 
-    2.1 Pirâmide
+    2.1 Piramid - Invite 3 Friends to Play the game.
    </br>
-    ![.](assets/piramid_icon.png)
+    <img style="width: 250px" src="assets/piramid_icon.png">
 
 </br></br>
 
-3. Quando chega no final do torneio
+3. Advance in a tournament
 
-    3.1 Galaxy
+    3.1 Galaxy - Reaching the final stage of a tournament.
    </br>
-    ![.](assets/galaxy_icon.png)
-
-
-</br></br>
-
-4. Envia primeira mensagem para pessoa
-
-    4.1 First Contact
-   </br>
-    ![.](assets/first_contact_icon.png)
+    <img style="width: 250px" src="assets/galaxy_icon.png">
 
 
 </br></br>
 
-5. salvou 10 vacas
+4. Use Chat
 
-    5.1 cow savior
+    4.1 First Contact - Chat with other players.
    </br>
-    ![.](assets/cow_savior_icon.png)
+    <img style="width: 250px" src="assets/first_contact_icon.png">
 
 
 </br></br>
 
-6. Adicionar um amigo
+5. Cow Savior
 
-    6.1 Coalition
+    5.1 Cow Savior - Save 50 cows from abduction.
    </br>
-    ![.](assets/firiends_icon.png)
+    <img style="width: 250px" src="assets/cow_savior_icon.png">
 
 
 </br></br>
 
-7. Primeira partida ganha
+6. Add friends
 
-    7.1 Estrela sorridente.
+    6.1 Coalition - Add another player as a friend.
    </br>
-    ![.](assets/first_win_icon.png)
+    <img style="width: 250px" src="assets/firiends_icon.png">
 
 
 </br></br>
 
-8. Primeiro lugar no torenio
+7. First Win
 
-    7.1 troféu ouro
+    7.1 First Win - Win your first match.
    </br>
-    ![.](assets/tromphy_gold_icon.png)
+    <img style="width: 250px" src="assets/first_win_icon.png">
 
 
 </br></br>
 
-9. Segundo lugar no torenio
+8. Reach the end of the tournament
 
-    9.1 troféu prata
+    7.1 Winner - Win a tournament in first place.
    </br>
-    ![.](assets/tromphy_silver_icon.png)
+    <img style="width: 250px" src="assets/tromphy_gold_icon.png">
 
 
 </br></br>
 
-10. Terceiro lugar no torenio
+9. Reach the end of the tournament
 
-    10.1 troféu bronze
+    9.1 Second place - Win a tournament in second place.
+   </br>
+    <img style="width: 250px" src="assets/tromphy_silver_icon.png">
+
+
+</br></br>
+
+10. Reach the end of the tournament
+
+    10.1 Win a tournament in third place.
     </br>
-    ![.](assets/tromphy_brown_icon.png)
+    <img style="width: 250px" src="assets/tromphy_brown_icon.png">

@@ -17,7 +17,7 @@ Front-End do projeto ft_transcendence da 42 School
 - ✅ fragment perfil público
 - ✅ fragment histórico partidas
 - 🚧 fragment torneio
-- 🚧 fragment chat
+- ✅ fragment chat
 - ✅ fragment badges
 - 🚧 fragment match
 
@@ -54,7 +54,7 @@ Front-End do projeto ft_transcendence da 42 School
 ![.](preview/tournament2.png)
 ![.](preview/tournament3.png)
 
-## 🚧FRAGMENT CHAT
+## FRAGMENT CHAT
 ![.](preview/chat.png)
 
 ## FRAGMENT BADGES

@@ -1,4 +1,26 @@
 $(document).ready(function() {
+    var mode = 'small';
+
+    function ActivateMode(mode) {
+        if(mode === 'small') {
+            document.querySelector('#f1p1').remove();
+            document.querySelector('#f1p2').remove();
+            document.querySelector('#f1p3').remove();
+            document.querySelector('#f1p4').remove();
+        
+            document.querySelector('#f1p5').remove();
+            document.querySelector('#f1p6').remove();
+            document.querySelector('#f1p7').remove();
+            document.querySelector('#f1p8').remove();
+
+            document.querySelector('.card-body').style.height = '700px';
+            
+            document.querySelectorAll('.round').forEach((element) => {
+                element.style.paddingBottom = '150px'; 
+            });
+        }
+    }
+
     function put_color(match, player, status) {
         let matchId = match.getAttribute("id")
         let id = `#${matchId}_${player}`
@@ -315,11 +337,19 @@ $(document).ready(function() {
    
     var matchWidth = $(f1p1).css('width');
     var matchHeight = $(f1p1).css('height');
-    function buildBrackets() {
-        let f1p1 = document.getElementById('f1p1');
-        let f1p2 = document.getElementById('f1p2');
-        let f1p3 = document.getElementById('f1p3');
-        let f1p4 = document.getElementById('f1p4');
+    function buildBrackets(mode) {
+        if(mode === 'big'){
+
+            let f1p1 = document.getElementById('f1p1');
+            let f1p2 = document.getElementById('f1p2');
+            let f1p3 = document.getElementById('f1p3');
+            let f1p4 = document.getElementById('f1p4');
+            
+            let f1p5 = document.getElementById('f1p5');
+            let f1p6 = document.getElementById('f1p6');
+            let f1p7 = document.getElementById('f1p7');
+            let f1p8 = document.getElementById('f1p8');
+        }
     
         let f2p1 = document.getElementById('f2p1');
         let f2p2 = document.getElementById('f2p2');
@@ -329,33 +359,33 @@ $(document).ready(function() {
         let f2p3 = document.getElementById('f2p3');
         let f2p4 = document.getElementById('f2p4');
     
-        let f1p5 = document.getElementById('f1p5');
-        let f1p6 = document.getElementById('f1p6');
-        let f1p7 = document.getElementById('f1p7');
-        let f1p8 = document.getElementById('f1p8');
 
         destroyBrackets();
-        let brkt_f1p1 = createMatchBracket(f1p1, f2p1, winnerPlayer(f1p1), 1)
-        let brkt_f1p2 = createMatchBracket(f1p2, f2p1, winnerPlayer(f1p2), 1)
-        let brkt_f1p3 = createMatchBracket(f1p3, f2p2, winnerPlayer(f1p3), 1)
-        let brkt_f1p4 = createMatchBracket(f1p4, f2p2, winnerPlayer(f1p4), 1)
+
+        if(mode === 'big'){
+            let brkt_f1p1 = createMatchBracket(f1p1, f2p1, winnerPlayer(f1p1), 1)
+            let brkt_f1p2 = createMatchBracket(f1p2, f2p1, winnerPlayer(f1p2), 1)
+            let brkt_f1p3 = createMatchBracket(f1p3, f2p2, winnerPlayer(f1p3), 1)
+            let brkt_f1p4 = createMatchBracket(f1p4, f2p2, winnerPlayer(f1p4), 1)
+            
+            let brkt_f1p5 = createMatchBracket(f1p5, f2p3, winnerPlayer(f1p5), -1)
+            let brkt_f1p6 = createMatchBracket(f1p6, f2p3, winnerPlayer(f1p6), -1)
+            let brkt_f1p7 = createMatchBracket(f1p7, f2p4, winnerPlayer(f1p7), -1)
+            let brkt_f1p8 = createMatchBracket(f1p8, f2p4, winnerPlayer(f1p8), -1)
+            
+            createPhaseBrackets(brkt_f1p1, brkt_f1p2, f1p1, f2p1, matchFinished(f1p1, f1p2), 1)
+            createPhaseBrackets(brkt_f1p3, brkt_f1p4, f1p3, f2p2, matchFinished(f1p3, f1p4), 1)
+            createPhaseBrackets(brkt_f1p5, brkt_f1p6, f1p5, f2p3, matchFinished(f1p5, f1p6), -1)
+            createPhaseBrackets(brkt_f1p7, brkt_f1p8, f1p6, f2p4, matchFinished(f1p7, f1p8), -1)
+        }
         let brkt_f2p1 = createMatchBracket(f2p1, f3p1, winnerPlayer(f2p1), 1)
         let brkt_f2p2 = createMatchBracket(f2p2, f3p1, winnerPlayer(f2p2), 1)
         
         let brkt_f2p3 = createMatchBracket(f2p3, f3p1, winnerPlayer(f2p3), -1)
         let brkt_f2p4 = createMatchBracket(f2p4, f3p1, winnerPlayer(f2p4), -1)
-        let brkt_f1p5 = createMatchBracket(f1p5, f2p3, winnerPlayer(f1p5), -1)
-        let brkt_f1p6 = createMatchBracket(f1p6, f2p3, winnerPlayer(f1p6), -1)
-        let brkt_f1p7 = createMatchBracket(f1p7, f2p4, winnerPlayer(f1p7), -1)
-        let brkt_f1p8 = createMatchBracket(f1p8, f2p4, winnerPlayer(f1p8), -1)
         
-        createPhaseBrackets(brkt_f1p1, brkt_f1p2, f1p1, f2p1, matchFinished(f1p1, f1p2), 1)
-        createPhaseBrackets(brkt_f1p3, brkt_f1p4, f1p3, f2p2, matchFinished(f1p3, f1p4), 1)
         createPhaseBrackets(brkt_f2p1, brkt_f2p2, f2p1, f3p1, matchFinished(f2p1, f2p2), 1)
-        
         createPhaseBrackets(brkt_f2p3, brkt_f2p4, f2p3, f3p1, matchFinished(f2p3, f2p4), -1)
-        createPhaseBrackets(brkt_f1p5, brkt_f1p6, f1p5, f2p3, matchFinished(f1p5, f1p6), -1)
-        createPhaseBrackets(brkt_f1p7, brkt_f1p8, f1p6, f2p4, matchFinished(f1p7, f1p8), -1)
 
     }
 
@@ -417,8 +447,8 @@ $(document).ready(function() {
     }
    
     /*********************  CONSTRÓI ELEMENTOS NA TELA  *********************/
-    
-    buildBrackets();
+    ActivateMode(mode);
+    buildBrackets(mode);
     create3rd(get3rdPlayersMatch());
     cardTimer();
    

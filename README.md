@@ -14,11 +14,11 @@ Front-End do projeto ft_transcendence da 42 School
 - ✅ fragment painel login
 - ✅ fragment "esqueci minha senha"
 - ✅ fragment perfil usuario
-- 🚧 fragment perfil público
-- 🚧 fragment histórico partidas
-- ✅ fragment torneio
-- ✅ fragment chat
-- 🚧 fragment badges
+- ✅ fragment perfil público
+- ✅ fragment histórico partidas
+- 🚧 fragment torneio
+- 🚧 fragment chat
+- ✅ fragment badges
 - 🚧 fragment match
 
 ## TELA BASE
@@ -47,21 +47,18 @@ Front-End do projeto ft_transcendence da 42 School
 ![.](preview/profile2.png)
 
 ## FRAGMENT PERFIL PÚBLICO
+![.](preview/public_profile.png)
 
-
-## FRAGMENT HISTÓRICO PARTIDAS
-
-
-## FRAGMENT TORNEIO
+## 🚧FRAGMENT TORNEIO
 ![.](preview/tournament1.png)
 ![.](preview/tournament2.png)
 ![.](preview/tournament3.png)
 
-## FRAGMENT CHAT
+## 🚧FRAGMENT CHAT
 ![.](preview/chat.png)
 
 ## FRAGMENT BADGES
+![.](preview/badges_galery.png)
 
-
-## FRAGMENT MATCH
+## 🚧FRAGMENT MATCH
 
